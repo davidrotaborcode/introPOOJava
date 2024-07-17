@@ -6,19 +6,17 @@ import java.util.List;
 public class Persona {
     
     public String nombre;
-    public List<String> nombresProducto = new ArrayList<>();
-    public List<String> categoriasProducto = new ArrayList<>();
-    public List<Double> preciosProducto = new ArrayList<>();
+    public List<String> categoriasProductos  = new ArrayList<String>();
+    public List<String> nombresProductos  = new ArrayList<String>();
+    public List<Double> preciosProductos  = new ArrayList<Double>();
 
     public Persona(String nombre) {
         this.nombre = nombre;
     }
 
-    public void agregarProducto(String nombre, String categoria, Double precio) {
-        nombresProducto.add(nombre);
-        categoriasProducto.add(categoria);
-        preciosProducto.add(precio);
+    public void agregarProducto(String categoria, String nombre, double precio) {
+        categoriasProductos.add(categoria);
+        nombresProductos.add(nombre);
+        preciosProductos.add(precio);
     }
-
-
 }

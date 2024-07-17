@@ -3,6 +3,8 @@
  */
 package com.davidrotabor.introduccionPoo;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
@@ -11,14 +13,7 @@ public class App {
 
         Scanner scan = new Scanner(System.in);
 
-        int indiceProductos = 0;
-
-        String[] nombresPersonas = new String[100];
-        int[][] compras = new int[100][100];
-
-        String[] categoriasProductos = new String[10000];
-        String[] nombresProductos = new String[10000];
-        double[] preciosProductos = new double[10000];
+        List<Persona> personas = new ArrayList<Persona>();
 
         System.out.println("Cuántas personas van a comprar?");
         int cantidadPersonas = scan.nextInt();
@@ -26,7 +21,8 @@ public class App {
         for (int i = 0; i < cantidadPersonas; i++) {
             System.out.println("Cuál es tu nombre?");
             scan.nextLine();
-            nombresPersonas[i] = scan.nextLine();
+
+            Persona persona = new Persona(scan.nextLine());
 
             System.out.println("Cuántas productos va a comprar?");
             int cantidadProductos = scan.nextInt();
@@ -34,35 +30,28 @@ public class App {
             for (int j = 0; j < cantidadProductos; j++) {
                 System.out.println("Cuál es la categoria del producto");
                 scan.nextLine();
-                categoriasProductos[indiceProductos] = scan.nextLine();
+                String categoria = scan.nextLine();
 
                 System.out.println("Cuál es el nombre del producto");
-                nombresProductos[indiceProductos] = scan.nextLine();
+                String nombreProducto = scan.nextLine();
 
                 System.out.println("Cuál es el precio del producto");
-                preciosProductos[indiceProductos] = scan.nextDouble();
+                double precioProducto = scan.nextDouble();
 
-                compras[i][j] = indiceProductos;
-                indiceProductos++;
+                persona.agregarProducto(categoria, nombreProducto, precioProducto);
             }
-
+            
+            personas.add(persona);
         }
 
-        for (int i = 0; i < 100; i++) {
-            if (nombresPersonas[i] == null) {
-                break;
-            }
+        for (Persona persona : personas) {
+            
+            System.out.println(persona.nombre + " compró:");
 
-            System.out.println(nombresPersonas[i] + " tiene estas compras:");
-
-            for (int j = 0; j < 100; j++) {
-                if (compras[i][j] == 0 && j != 0) {
-                    break;
-                }
-
-                System.out.println("Categoria: " + categoriasProductos[compras[i][j]]);
-                System.out.println("Nombre: " + nombresProductos[compras[i][j]]);
-                System.out.println("Precio: " + preciosProductos[compras[i][j]]);
+            for (int i = 0; i < persona.categoriasProductos.size(); i++) {
+                System.out.println("Categoria: " + persona.categoriasProductos.get(i));
+                System.out.println("Nombre: " + persona.nombresProductos.get(i));
+                System.out.println("Precio: " + persona.preciosProductos.get(i));
             }
         }
 
