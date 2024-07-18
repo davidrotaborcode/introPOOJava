@@ -48,10 +48,10 @@ public class App {
             
             System.out.println(persona.nombre + " compró:");
 
-            for (int i = 0; i < persona.categoriasProductos.size(); i++) {
-                System.out.println("Categoria: " + persona.categoriasProductos.get(i));
-                System.out.println("Nombre: " + persona.nombresProductos.get(i));
-                System.out.println("Precio: " + persona.preciosProductos.get(i));
+            for (int i = 0; i < persona.productos.size(); i++) {
+                System.out.println("Categoria: " + persona.productos.get(i).nombre);
+                System.out.println("Nombre: " + persona.productos.get(i).categoria);
+                System.out.println("Precio: " + persona.productos.get(i).precio);
             }
         }
 

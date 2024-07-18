@@ -1,8 +1,5 @@
 package com.davidrotabor.introduccionPoo;
 
-import java.util.ArrayList;
-import java.util.List;
-
 public class Producto {
     
     public String categoria;
